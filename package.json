@@ -1,6 +1,6 @@
 {
   "name": "readline-completer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Better tab completion for node readline",
   "scripts": {
     "test": "ava && xo --ignore example.js --ignore index.js",
