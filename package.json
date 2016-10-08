@@ -1,7 +1,7 @@
 {
-  "name": "$package_name",
+  "name": "readline-completer",
   "version": "1.0.0",
-  "description": "$package_description",
+  "description": "Better tab completion for node readline",
   "scripts": {
     "test": "ava && xo --ignore example.js --ignore index.js",
     "setup": "rollup -f cjs main.js --output index.js",
@@ -9,7 +9,7 @@
     "cover-publish": "nyc report --reporter=text-lcov | coveralls"
   },
   "keywords": [],
-  "author": "$package_author_name <$package_author_email>",
+  "author": "Andrea Parodi <andrea@parro.it>",
   "license": "MIT",
   "files": [
     "index.js",
@@ -22,5 +22,14 @@
     ]
   },
   "jsnext:main": "main.js",
-  "repository": "$package_author/$package_name"
+  "repository": "parro-it/readline-completer",
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.16.0",
+    "babel-register": "^6.16.3",
+    "coveralls": "^2.11.14",
+    "nyc": "^8.3.1",
+    "rollup": "^0.36.1",
+    "xo": "^0.16.0"
+  }
 }
