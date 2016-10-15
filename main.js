@@ -1,3 +1,3 @@
-export default function readlineCompleter() {
-	return 42;
-}
+import readlineCompleter from './src/completer';
+
+export default readlineCompleter;

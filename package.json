@@ -3,9 +3,11 @@
   "version": "1.1.0",
   "description": "Better tab completion for node readline",
   "scripts": {
-    "test": "ava && xo --ignore example.js --ignore index.js",
+    "ava": "ava --require babel-register",
+    "xo": "xo --ignore example.js --ignore index.js",
+    "test": "npm run ava --silent && npm run xo --silent",
     "setup": "rollup -f cjs main.js --output index.js",
-    "cover-test": "nyc ava && xo --ignore example.js --ignore index.js",
+    "cover-test": "nyc npm run ava --silent && npm run xo --silent",
     "cover-publish": "nyc report --reporter=text-lcov | coveralls"
   },
   "keywords": [],
@@ -31,5 +33,13 @@
     "nyc": "^8.3.1",
     "rollup": "^0.36.1",
     "xo": "^0.16.0"
+  },
+  "dependencies": {
+    "ansi-escape": "^1.1.0",
+    "common-prefix": "^1.1.0",
+    "get-cursor-position": "^1.0.2",
+    "keypress": "^0.2.1",
+    "split-array": "^1.0.1",
+    "term-canvas": "^0.0.5"
   }
 }
