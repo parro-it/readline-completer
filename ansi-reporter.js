@@ -61,7 +61,7 @@ const mkAnsiResultCollector = () => {
 
 						case 'f':
 						case 'H':
-							result.push({CUP: params});
+							result.push({CURSOR_POSITION: {row: params[0], col: params[1]}});
 							break;
 
 						case 'P':
@@ -135,7 +135,7 @@ const mkAnsiResultCollector = () => {
 									case 35:
 									case 36:
 									case 37:
-										return 'CLEAR_FG';
+										return {SET_FG: p1 % 10};
 									case 40:
 									case 41:
 									case 42:
@@ -144,7 +144,7 @@ const mkAnsiResultCollector = () => {
 									case 45:
 									case 46:
 									case 47:
-										return 'CLEAR_BG';
+										return {SET_BG: p1 % 10};
 									default:
 										return p1;
 								}

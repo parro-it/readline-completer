@@ -15,15 +15,53 @@ function tabCompleter(word, partial, line, cb) {
 	]);
 }
 
-test('exports a function', t => {
+test('exports a function', async t => {
 	const hns = harness.create(completer);
 	hns.rlw.tabCompleter = tabCompleter;
 	hns.rlw.line = 'e';
 
 	hns.key('tab');
 
-	report(hns.rlw.output).then(result => {
-		console.log(result);
-	});
+	const promisedResult = report(hns.rlw.output);
 	setTimeout(() => hns.rlw.output.end());
+	const result = await promisedResult;
+	// console.log(JSON.stringify(result, null, 4).replace(/"/g, '\''));
+	t.deepEqual(result, [{
+		LOW: {
+			collected: '?',
+			params: [25]
+		}
+	}, {
+		SGR: [{SET_BG: 4}]
+	}, {
+		SGR: [{SET_FG: 0}]
+	}, {
+		CURSOR_POSITION: {row: 2, col: 0}
+	}, {
+		PRINT: 'e2freefrag '
+	}, {
+		SGR: ['DEFAULT_BG']
+	}, {
+		SGR: ['DEFAULT_FG']
+	}, {
+		CURSOR_POSITION: {row: 2, col: 21}
+	}, {
+		PRINT: 'editres '
+	}, {
+		SGR: ['DEFAULT_BG']
+	}, {
+		SGR: ['DEFAULT_FG']
+	}, {
+		CURSOR_POSITION: {row: 2, col: 42}
+	}, {
+		PRINT: 'enhancer '
+	}, {
+		SGR: ['DEFAULT_BG']
+	}, {
+		SGR: ['DEFAULT_FG']
+	}, {
+		CURSOR_POSITION: {row: 2, col: 63}
+	}, {
+		PRINT: 'eval '
+	}]);
 });
