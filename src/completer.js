@@ -22,6 +22,8 @@ export default function completer(rl) {
 
 		tabComplete.call(this);
 	};
+
+	return rl;
 }
 
 function tabComplete() {

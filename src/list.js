@@ -31,17 +31,19 @@ const onKeypress = list => (ch, key) => {
 	}
 };
 
-const checkPositionAndDraw = list => () => readCursorPosition(
-	list.input,
-	list.output,
-	(err, position) => {
-		if (err) {
-			return console.error(err);
+const checkPositionAndDraw = list => () => {
+	return readCursorPosition(
+		list.input,
+		list.output,
+		(err, position) => {
+			if (err) {
+				return console.error(err);
+			}
+			list.position = position || {row: 0, col: 0};
+			list.draw();
 		}
-		list.position = position || {row: 0, col: 0};
-		list.draw();
-	}
-);
+	);
+};
 
 const draw = list => () => {
 	list.ctx.save();
@@ -107,6 +109,7 @@ export default class List extends EventEmitter {
 		const size = this.output.getWindowSize();
 		this.size = {row: size[1], col: size[0]};
 		const canvas = new Canvas(size[1], size[0]);
+		canvas.stream = opts.output;
 		this.ctx = canvas.getContext('2d');
 	}
 

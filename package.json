@@ -26,13 +26,19 @@
   "jsnext:main": "main.js",
   "repository": "parro-it/readline-completer",
   "devDependencies": {
+    "ansi-stream": "^0.0.1",
     "ava": "^0.16.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.16.0",
     "babel-register": "^6.16.3",
+    "concat-stream": "^1.5.2",
     "coveralls": "^2.11.14",
+    "node-ansiparser": "^2.2.0",
     "nyc": "^8.3.1",
+    "readline-testharness": "^0.3.0",
     "rollup": "^0.36.1",
-    "xo": "^0.16.0"
+    "through2": "^2.0.1",
+    "xo": "^0.16.0",
+    "yttej": "^0.1.1"
   },
   "dependencies": {
     "ansi-escape": "^1.1.0",

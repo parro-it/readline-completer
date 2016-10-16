@@ -1,4 +1,12 @@
+let _testPosition = null;
+
 export default function readCursorPosition(stdin, stdout, cb) {
+	if (_testPosition) {
+		return setImmediate(() => {
+			cb(null, _testPosition);
+		});
+	}
+
 	let result = '';
 	let timeoutHandler = null;
 
@@ -20,4 +28,8 @@ export default function readCursorPosition(stdin, stdout, cb) {
 	timeoutHandler = setTimeout(() => cb(new Error('Timeout reading cursor position data')), 1000);
 
 	stdout.write('\u001b[6n');
+}
+
+export function _setTestPosition(row, col) {
+	_testPosition = {row, col};
 }
